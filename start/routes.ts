@@ -25,9 +25,11 @@ Route.get('/', async () => {
 })
 
 Route.post('login', 'UsersController.store')
+Route.get('company-categories', 'CompanyCategoriesController.index')
 
 Route.group(() => {
 	Route.get('me', 'LoginController.show')
 
 	Route.post('bussiness', 'CompaniesController.store')
+	Route.get('near-companies', 'GetNearMarkersController.index')
 }).middleware(['auth'])

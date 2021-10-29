@@ -12,6 +12,6 @@ export default class LoginController {
 		const token = await auth.attempt(email, password)
 		const user = await User.findBy('email', email)
 
-		return { token, user }
+		return { token: token.token, user }
 	}
 }
