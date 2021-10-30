@@ -11,8 +11,8 @@ export default class CompanyCategories extends BaseSchema {
 			/**
 			 * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
 			 */
-			table.timestamp('created_at')
-			table.timestamp('updated_at')
+			table.timestamp('created_at', true)
+			table.timestamp('updated_at', true)
 		})
 	}
 
