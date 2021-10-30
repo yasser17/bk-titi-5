@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, BelongsTo, belongsTo } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, BelongsTo, belongsTo, computed } from '@ioc:Adonis/Lucid/Orm'
 import User from 'App/Models/User'
 import CompanyCategory from 'App/Models/CompanyCategory'
+import Env from '@ioc:Adonis/Core/Env'
 
 export default class Company extends BaseModel {
 	@column({ isPrimary: true })
@@ -48,6 +49,11 @@ export default class Company extends BaseModel {
 
 	@column()
 	public cover: string
+
+	@computed()
+	public get imageUrl() {
+		return `${Env.get('APP_URL')}/uploads/${this.image}`
+	}
 
 	@belongsTo(() => User)
 	public user: BelongsTo<typeof User>
