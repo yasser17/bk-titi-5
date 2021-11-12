@@ -52,7 +52,16 @@ export default class Company extends BaseModel {
 
 	@computed()
 	public get imageUrl() {
+		if (!this.image) return null
+
 		return `${Env.get('APP_URL')}/uploads/${this.image}`
+	}
+
+	@computed()
+	public get coverUrl() {
+		if (!this.cover) return null
+
+		return `${Env.get('APP_URL')}/uploads/${this.cover}`
 	}
 
 	@belongsTo(() => User)

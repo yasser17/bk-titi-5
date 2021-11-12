@@ -33,4 +33,5 @@ Route.group(() => {
 	Route.post('bussiness', 'CompaniesController.store')
 	Route.get('near-companies', 'GetNearMarkersController.index')
 	Route.post('company-image-profile/:companyId', 'UploadCompanyImagesController.store')
+	Route.post('company-image-cover/:companyId', 'UploadCompanyCoversController.store')
 }).middleware(['auth'])
