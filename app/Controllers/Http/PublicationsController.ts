@@ -10,9 +10,12 @@ export default class PublicationsController {
 	public async index({ request, params }: HttpContextContract) {
 		const { page } = request.all()
 
-		const publications = await Post.query().where('company_id', params.id).paginate(page)
+		const publications = await Post.query()
+			.where('company_id', params.id)
+			.orderBy('created_at', 'desc')
+			.paginate(page)
 
-		return publications;
+		return publications
 	}
 
 	public async store({ request, params }: HttpContextContract) {
