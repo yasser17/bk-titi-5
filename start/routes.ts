@@ -26,11 +26,13 @@ Route.get('/', async () => {
 
 Route.post('login', 'UsersController.store')
 Route.get('company-categories', 'CompanyCategoriesController.index')
+Route.get('currencies', 'CurrenciesController.index')
 
 Route.group(() => {
 	Route.get('me', 'LoginController.show')
 
 	Route.post('bussiness', 'CompaniesController.store')
+	Route.patch('bussiness/:id', 'CompaniesController.update')
 	Route.get('near-companies', 'GetNearMarkersController.index')
 	Route.post('company-image-profile/:companyId', 'UploadCompanyImagesController.store')
 	Route.post('company-image-cover/:companyId', 'UploadCompanyCoversController.store')
