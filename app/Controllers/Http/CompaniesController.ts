@@ -25,16 +25,16 @@ export default class CompaniesController {
 	}
 
 	public async update({ request, params }: HttpContextContract) {
-		const updateCompanySchema = schema.create({
-			name: schema.string({}, [rules.required()]),
-			details: schema.string({}, [rules.required()]),
-			phone: schema.string({}, [rules.required()]),
-		})
-		try {
-			await validator.validate({ schema: updateCompanySchema, data: request.all() })
-		} catch (e) {
-			console.log(e.messages)
-		}
+		// const updateCompanySchema = schema.create({
+		// 	name: schema.string({}, [rules.required()]),
+		// 	details: schema.string({}, [rules.required()]),
+		// 	phone: schema.string({}, [rules.required()]),
+		// })
+		// try {
+		// 	await validator.validate({ schema: updateCompanySchema, data: request.all() })
+		// } catch (e) {
+		// 	console.log(e.messages)
+		// }
 
 		const company = await Company.findOrFail(params.id)
 
@@ -51,6 +51,7 @@ export default class CompaniesController {
 				'name',
 				'phone',
 				'place_id',
+				'currency_id'
 			])
 		)
 		await company.save()

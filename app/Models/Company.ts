@@ -50,6 +50,9 @@ export default class Company extends BaseModel {
 	@column()
 	public cover: string
 
+	@column()
+	public currency_id: number
+
 	@computed()
 	public get imageUrl() {
 		if (!this.image) return null
